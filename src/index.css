@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* raw values — these swap at runtime, so they live outside @theme */
+:root {
+  --p-fg: #6b6375;
+  --p-heading: #ffffff;
+  --p-canvas: #fff;
+  --p-line: #e5e4e7;
+  --p-code: #f4f3ec;
+  --p-accent: #aa3bff;
+  --p-accent-bg: rgb(170 59 255 / 0.1);
+  --p-accent-line: rgb(170 59 255 / 0.5);
+  --p-social: rgb(244 243 236 / 0.5);
+  --p-shadow: rgba(255, 255, 255, 0.1) 0 10px 15px -3px, rgb(0 0 0 / 0.05) 0 4px 6px -2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p-fg: #9ca3af;
+    --p-heading: #f3f4f6;
+    --p-canvas: #f2f3f7;
+    --p-line: #2e303a;
+    --p-code: #e9eaf3;
+    --p-accent: #c084fc;
+    --p-accent-bg: rgb(192 132 252 / 0.15);
+    --p-accent-line: rgb(192 132 252 / 0.5);
+    --p-social: rgb(47 48 58 / 0.5);
+    --p-shadow: rgb(0 0 0 / 0.4) 0 10px 15px -3px, rgb(0 0 0 / 0.25) 0 4px 6px -2px;
+  }
+}
+
+@theme inline {
+  --color-fg: var(--p-fg);
+  --color-heading: var(--p-heading);
+  --color-canvas: var(--p-canvas);
+  --color-line: var(--p-line);
+  --color-code: var(--p-code);
+  --color-accent: var(--p-accent);
+  --color-accent-bg: var(--p-accent-bg);
+  --color-accent-line: var(--p-accent-line);
+  --color-social: var(--p-social);
+
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  --shadow-card: var(--p-shadow);
+}
+
+@layer base {
+  :root {
+    font: 18px/145% var(--font-sans);
+    letter-spacing: 0.18px;
+    color-scheme: light dark;
+    color: var(--color-fg);
+    background: var(--color-canvas);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @media (width < 64rem) { font-size: 16px; }
+  }
+
+  h1, h2 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--color-heading);
+  }
+  h1 {
+    font-size: 56px;
+    letter-spacing: -1.68px;
+    margin: 32px 0;
+    @media (width < 64rem) { font-size: 36px; margin: 20px 0; }
+  }
+  h2 {
+    font-size: 24px;
+    line-height: 118%;
+    letter-spacing: -0.24px;
+    margin: 0 0 8px;
+    @media (width < 64rem) { font-size: 20px; }
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 135%;
+    display: inline-flex;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--color-heading);
+    background: var(--color-code);
+  }
+}
