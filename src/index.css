@@ -2,15 +2,15 @@
 
 /* raw values — these swap at runtime, so they live outside @theme */
 :root {
-  --p-fg: #6b6375;
+  --p-fg: #000000;
   --p-heading: #ffffff;
-  --p-canvas: #fff;
+  --p-canvas: #000000;
   --p-line: #e5e4e7;
-  --p-code: #f4f3ec;
+  --p-code: #000000;
   --p-accent: #aa3bff;
   --p-accent-bg: rgb(170 59 255 / 0.1);
   --p-accent-line: rgb(170 59 255 / 0.5);
-  --p-social: rgb(244 243 236 / 0.5);
+  --p-social: rgba(0, 0, 0, 0.5);
   --p-shadow: rgba(255, 255, 255, 0.1) 0 10px 15px -3px, rgb(0 0 0 / 0.05) 0 4px 6px -2px;
 }
 
@@ -18,11 +18,11 @@
   :root {
     --p-fg: #9ca3af;
     --p-heading: #f3f4f6;
-    --p-canvas: #f2f3f7;
+    --p-canvas: #030304;
     --p-line: #2e303a;
     --p-code: #e9eaf3;
     --p-accent: #c084fc;
-    --p-accent-bg: rgb(192 132 252 / 0.15);
+    --p-accent-bg: rgba(113, 0, 225, 0.801);
     --p-accent-line: rgb(192 132 252 / 0.5);
     --p-social: rgb(47 48 58 / 0.5);
     --p-shadow: rgb(0 0 0 / 0.4) 0 10px 15px -3px, rgb(0 0 0 / 0.25) 0 4px 6px -2px;

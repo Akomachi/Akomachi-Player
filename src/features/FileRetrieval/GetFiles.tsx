@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { parseBlob } from 'music-metadata'
-import "./GetFiles.css"
 
 type Track = {
     title: string
@@ -28,7 +27,7 @@ const GetFiles = () => {
     }
 
     return (
-        <div className={`drop-area ${dragging ? 'dragging' : ''}`}
+        <div className={`border-double flex min-h-16 items-center justify-center rounded-xl border-2 border-white  p-10 transition-colors ${dragging ? 'border-accent-line bg-accent-bg' : 'border-line'}`}
             onDragEnter={(e) => {
                 e.preventDefault()
                 depth.current++
@@ -51,15 +50,20 @@ const GetFiles = () => {
             }
         }}
         > {track ? (
-            <div className="track-info">
-                {track.cover ? <img src={track.cover} alt="Cover" /> : <div className="placeholder" />}
-                <div>
-                    <h3>{track.title}</h3>
-                    <p>{track.artist}</p>
+            <div className="item-center flex flex-col gap-2 justify-center mt-45 text-center">
+                {track.cover ? (
+                    <img 
+                    src={track.cover} 
+                    alt="Cover"
+                    className="h-64 w-64 object-cover rounded-lg shadow-lg" 
+                    />) : (<div className="placeholder" />)}
+                <div className = "min-w-0">
+                    <h3 className = "truncate text-lg font-semibold text-yellow-300">{track.title}</h3>
+                    <p className = "text-white font-semibold">{track.artist}</p>
                 </div>
             </div>
         ) : (
-            <p>Drag and drop an audio file here</p>
+            <p className="text-3xl text-white">Drag and drop an audio file here</p>
         )}
 
         </div>
