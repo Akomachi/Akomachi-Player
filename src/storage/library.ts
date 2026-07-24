@@ -39,6 +39,6 @@ export async function getTracks(): Promise<Track[]>{
     return (await db()).getAll("tracks")
 }
 
-export async function getTrack(id: string): Promise<Track | null>{
+export async function getTrack(id: string): Promise<Track | undefined>{
     return (await db()).get("tracks", id)
 }

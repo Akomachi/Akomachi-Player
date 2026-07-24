@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { engine } from './engine'
-import { audioURL } from '../storage/url'
+import { audioURL, coverURL } from '../storage/url'
 import { getTrack } from '../storage/library'
 import type { Track } from '../types'
 import { queue } from "./queue"  
 
-export function AudioPlayer(){
+export function useAudioPlayer(){
     const [current, setCurrent] = useState<Track | null>(null)
     const [playing, setPlaying] = useState(false)
     const [time, setTime] = useState(0)
@@ -25,6 +25,40 @@ export function AudioPlayer(){
         }
     }, [])
 
+    const next = useCallback(() => {
+        const n = queue.next()
+        if (n) void playId(n)
+    }, [playId])
+
+    const prev = useCallback(() => {
+        const p = queue.prev()
+        if (p) void playId(p)
+    }, [playId])
+
+    useEffect(() => {
+        if (!current || !('mediaSession' in navigator)) return
+
+        let url: string | null = null
+        let cancelled = false
+
+        void coverURL(current.id).then(u => {
+            if (cancelled) return
+            url = u
+            navigator.mediaSession.metadata = new MediaMetadata({
+            title: current.title,
+            artist: current.artist,
+            album: current.album ?? '',
+            artwork: u ? [{ src: u, sizes: '512x512', type: 'image/jpeg' }] : [],
+            })
+        })
+
+        navigator.mediaSession.setActionHandler('play', () => void engine.play())
+        navigator.mediaSession.setActionHandler('pause', () => engine.pause())
+        navigator.mediaSession.setActionHandler('nexttrack', next)
+        navigator.mediaSession.setActionHandler('previoustrack', prev)
+        return () => { cancelled = true }
+
+    }, [current])
     useEffect(() => {
         const offs=[
             engine.on("play", () => setPlaying(true)),
@@ -35,8 +69,19 @@ export function AudioPlayer(){
             engine.on("ended", () => { const n = queue.next(); if (n) void playId(n) }),
         ]
         return () => offs.forEach(off => off())
-    }), [playId]
+    }, [playId])
 
-    
+    return {
+        current, playing, time, duration, volume,
+        playTrack: (t: Track, list?: string[]) => {
+            if (list) queue.set(list, list.indexOf(t.id))
+            return playId(t.id)
+        },
+        toggle: () => (engine.el.paused ? void engine.play() : engine.pause()),
+        seek: (t: number) => engine.seek(t),
+        setVolume: (v: number) => engine.setVolume(v),
+        next: () => { const n = queue.next(); if (n) void playId(n)},
+        prev: () => { const p = queue.prev(); if (p) void playId(p)}
+    }
 
 }

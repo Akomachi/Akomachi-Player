@@ -33,7 +33,7 @@ export default function getFiles({ onAdded }: { onAdded: (t: Track) => void }){
             }}
         className={"flex"}
     >
-      {busy > 0 ? <p>Adding {busy}…</p> : <p>Drag and drop audio files here</p>}
+      {busy > 0 ? <p>Adding {busy}…</p> : <p className = "flex text-white">Drag and drop audio files here</p>}
     </div>
     )
 }
