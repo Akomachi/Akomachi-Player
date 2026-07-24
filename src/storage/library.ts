@@ -38,3 +38,7 @@ export async function addTrack(file: File): Promise<Track> {
 export async function getTracks(): Promise<Track[]>{
     return (await db()).getAll("tracks")
 }
+
+export async function getTrack(id: string): Promise<Track | null>{
+    return (await db()).get("tracks", id)
+}
