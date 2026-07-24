@@ -1,11 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import './audio/AudioPlayer.tsx'
-import GetFiles from './features/FileRetrieval/GetFiles.tsx'
+import App from './App'
+import { releaseAll } from './storage/url'
+import './index.css'
 
+void navigator.storage?.persist?.()
+window.addEventListener('pagehide', releaseAll)
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <GetFiles />
+    <App />
   </StrictMode>,
 )

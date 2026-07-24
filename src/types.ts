@@ -10,7 +10,7 @@ export type Track = {
 export type Playlist = {
     id: string
     name: string
-    entires: {uid: string, trackId: string}[]
+    entries: {uid: string, trackId: string}[]
     createdAt: number
 }
 
