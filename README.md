@@ -1,4 +1,4 @@
-# Akomachi Player!
+# Akomachi Player
 > A React + TailwindCSS project
 ## Overview
 
@@ -6,8 +6,10 @@ This is a music player that I am making for fun...! May or may not be completed 
 
 ## Features
 
-Coming Soon... (hopefully)
+- Add local audio files from your PC
+- Change the volume, skip through the track, and pause
+- Create your own playlists (Coming soon)
 
 ## Getting Started
 
-I don't know. Coming Soon... (definitely)
+Coming soon... (If you really want to try it... figure it out!)
