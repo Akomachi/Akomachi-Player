@@ -9,9 +9,6 @@ type Props = {
 }
 
 export function LibraryView({ tracks, currentId, playing, onPlay }: Props) {
-  if (tracks.length === 0) {
-    return <p className="mt-8 text-center text-fg">No tracks yet. Drop some files above.</p>
-  }
 
   return (
     <ul className="mt-6 flex flex-col">

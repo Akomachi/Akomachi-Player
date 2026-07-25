@@ -43,7 +43,7 @@ export default function App() {
         <h1 className="text-5xl font-medium text-heading">Library</h1>
         <button
           onClick={() => fileInput.current?.click()}
-          className="mt-2 rounded-lg border border-line px-4 py-2 text-sm text-heading hover:bg-code"
+          className="mt-3 rounded-lg border border-line px-4 py-2 text-sm text-white font-semibold hover:bg-code"
         >
           Add files
         </button>
@@ -57,8 +57,9 @@ export default function App() {
       >
         {tracks.length === 0 ? (
           <div className="mt-10 flex flex-col items-center justify-center p-16 text-fg">
-            <p className="text-lg text-white">Drop audio files anywhere to add them</p>
-            <p className="mt-1 text-sm text-fg/70">or double-click here, or use “Add files”</p>
+            {/* Feel free to alter this */}
+            <p className="text-lg text-white"><span className="text-accent">Drop audio files</span> anywhere to add them</p>
+            <p className="mt-1 text-sm text-fg/70">or <span className="text-accent">double-click</span> anywhere</p>
           </div>
         ) : (
           <LibraryView

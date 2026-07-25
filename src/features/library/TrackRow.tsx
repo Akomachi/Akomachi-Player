@@ -1,4 +1,3 @@
-// src/features/library/TrackRow.tsx
 import { useState, useEffect } from 'react'
 import type { Track } from '../../types'
 import { coverURL } from '../../storage/url'
@@ -23,7 +22,7 @@ export function TrackRow({ track, active, playing, onPlay }: Props) {
   return (
     <li>
       <button
-        onDoubleClick={(e) => { e.stopPropagation(); onPlay() }} // Since onDoubleClick also triggers add files.
+        onDoubleClick={(e) => { e.stopPropagation(); onPlay() }} // Since onDoubleClick also triggers fileInput.
         className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left`}
       >
         {cover

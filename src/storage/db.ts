@@ -1,6 +1,12 @@
 import { openDB, type DBSchema, type IDBPDatabase } from 'idb'
 import type { Track, Playlist } from '../types'
 
+/*
+
+Simple database configuration here
+For testing, if you want to reset the entire DB for yourself, write indexedDB.delete('music') in DevTools
+
+*/
 
 interface LibraryDB extends DBSchema {
     tracks: {key: string; value: Track; indexes: {byArtist: string}}

@@ -4,6 +4,7 @@ const cache = new Map<string, string>();
 let currentAudio: { id: string, url: string, } | null = null
 
 export async function audioURL(id: string): Promise<string | null>{
+    // Retains only one active audio URL at a time; That URL points to the current audio blob
     if ( currentAudio?.id == id) return currentAudio?.url
     const blob = await (await db()).get("audio", id)
     if (!blob) return null
@@ -13,6 +14,7 @@ export async function audioURL(id: string): Promise<string | null>{
 }
 
 export async function coverURL(id: string): Promise<string | null> {
+    // Unlike audio cache, caches multiple since it utilizes a Map.
     const hit = cache.get(id)
     if(hit) return hit
     const blob = await (await db()).get("covers", id)
