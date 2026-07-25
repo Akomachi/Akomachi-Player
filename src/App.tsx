@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { useLibrary } from './features/library/library'
 import { useAudioPlayer } from './audio/AudioPlayer'
 import { LibraryView } from './features/library/libraryView'
-import { PlayerBar } from './features/player/playerbar'
+import { PlayerBar } from './features/player/playerBar'
 import { addTrack } from './storage/library'
 
 const AUDIO = /\.(mp3|wav|flac|m4a|ogg|opus)$/i

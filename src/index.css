@@ -6,9 +6,9 @@
   --p-canvas: #000000;
   --p-line: #e5e4e7;
   --p-code: #000000;
-  --p-accent: #aa3bff;
+  --p-accent: hsl(213, 94%, 58%);
   --p-accent-bg: rgb(170 59 255 / 0.1);
-  --p-accent-line: rgb(170 59 255 / 0.5);
+  --p-accent-line: rgb(44, 173, 233);
   --p-social: rgba(0, 0, 0, 0.5);
   --p-shadow: rgba(255, 255, 255, 0.1) 0 10px 15px -3px, rgb(0 0 0 / 0.05) 0 4px 6px -2px;
 }
@@ -20,9 +20,9 @@
     --p-canvas: #030304;
     --p-line: #2e303a;
     --p-code: #e9eaf3;
-    --p-accent: #c084fc;
-    --p-accent-bg: rgba(113, 0, 225, 0.801);
-    --p-accent-line: rgb(192 132 252 / 0.5);
+    --p-accent: #00aaff;
+    --p-accent-bg: rgba(116, 216, 253, 0.557);
+    --p-accent-line: rgb(56, 195, 250);
     --p-social: rgb(47 48 58 / 0.5);
     --p-shadow: rgb(0 0 0 / 0.4) 0 10px 15px -3px, rgb(0 0 0 / 0.25) 0 4px 6px -2px;
   }

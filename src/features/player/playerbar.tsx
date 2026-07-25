@@ -23,6 +23,7 @@ export function PlayerBar({ player }: { player: ReturnType<typeof useAudioPlayer
 
   return (
     <div className="relative grid grid-cols-[20rem_auto_20rem] items-center gap-4 border-t border-line px-3 py-3">
+      {/* Grid based positioning, alter if you would like */}
       <div className="flex min-w-0 items-center gap-2">
         <div className="size-10 shrink-0 overflow-hidden rounded bg-code">
           {cover ? (
@@ -35,6 +36,7 @@ export function PlayerBar({ player }: { player: ReturnType<typeof useAudioPlayer
         </div>
       </div>
       <div className = "flex items-center gap-1">
+        {/* All of the button icons below, try and add a text on hover */}
         <button onClick={player.prev} className="px-1 text-fg hover:text-heading">◀◀</button>
         <button onClick={player.toggle} className="px-1 text-heading">{playing ? '❚❚' : '▶'}</button>
         <button onClick={player.next} className="px-1 text-fg hover:text-heading">▶▶</button>
@@ -51,8 +53,9 @@ export function PlayerBar({ player }: { player: ReturnType<typeof useAudioPlayer
         <span className="w-10 text-xs tabular-nums text-fg">{mmss(duration)}</span>
       </div>
       
-      <div className="relative z-10 col-start-3 flex min-w-0 w-20 items-center justify-end gap-2">
-        <Volume2 size={18} className="text-heading"></Volume2>
+      <div className="relative z-10 col-start-3 flex min-w-0 w-20 items-center justify-end gap-2"> 
+        {/* Alter the position of the volume bar (currently too close to the seek bar, use Spotify's UI as a reference) */}
+        <Volume2 size={18} className="text-heading"></Volume2> {/* Please fix this, volume icon isn't displaying correctly */}
         <input
           type="range" min={0} max={1} step={0.01}
           value={volume}
