@@ -38,12 +38,10 @@ export function useAudioPlayer(){
     useEffect(() => {
         if (!current || !('mediaSession' in navigator)) return
 
-        let url: string | null = null
         let cancelled = false
 
         void coverURL(current.id).then(u => {
             if (cancelled) return
-            url = u
             navigator.mediaSession.metadata = new MediaMetadata({
             title: current.title,
             artist: current.artist,
