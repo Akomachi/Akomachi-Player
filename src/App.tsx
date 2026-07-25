@@ -56,8 +56,8 @@ export default function App() {
         onDoubleClick={() => fileInput.current?.click()}
       >
         {tracks.length === 0 ? (
-          <div className="mt-10 flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-line p-16 text-fg">
-            <p className="text-lg">Drop audio files anywhere to add them</p>
+          <div className="mt-10 flex flex-col items-center justify-center p-16 text-fg">
+            <p className="text-lg text-white">Drop audio files anywhere to add them</p>
             <p className="mt-1 text-sm text-fg/70">or double-click here, or use “Add files”</p>
           </div>
         ) : (
