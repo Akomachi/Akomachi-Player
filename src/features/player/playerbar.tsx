@@ -1,15 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { mmss } from '../../lib/format'
 import type { useAudioPlayer } from '../../audio/AudioPlayer'
-
+import { coverURL } from '../../storage/url'
 export function PlayerBar({ player }: { player: ReturnType<typeof useAudioPlayer> }) {
   const { current, playing, time, duration, volume } = player
   const [scrub, setScrub] = useState<number | null>(null)
+  const [cover, setCover] = useState<string |null>(null)
+
+  useEffect(() => {
+    if (!current){
+      setCover(null)
+      return
+    }
+    let cancelled = false
+    void coverURL(current.id).then((u) => { if (!cancelled) setCover(u) })
+        return () => { cancelled = true }
+  }, [current?.id])
 
   if (!current) return null
 
   return (
     <div className="flex items-center gap-4 border-t border-line px-4 py-3">
+      <div className="flex min-w-0 items-center gap-2">
+        <div className="ml-5 size-10 shrink-0 overflow-hidden rounded bg-code">
+          {cover ? (
+            <img src={cover} alt="" className="size-full object-cover"></img>
+          ) : null}
+        </div>
+      </div>
       <div className="min-w-0 w-56">
         <p className="truncate text-sm font-medium text-heading">{current.title}</p>
         <p className="truncate text-xs text-fg">{current.artist}</p>

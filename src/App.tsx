@@ -10,8 +10,10 @@ export default function App() {
 
   return (
     <div className="flex h-svh flex-col">
-      <header className="border-b border-line px-6 py-4">
-        <h1 className="text-2xl font-medium text-heading">Library</h1>
+      <header className="border-line px-6 py-4 border-2">
+        <h1 className="text-5xl font-bold text-heading">Library</h1>
+        <img className="h-28 w-28 object-scale-down absolute right-3 top-2" src="src/assets/icon.png"></img>
+        <h1 className="text-3xl text-heading absolute right-32 top-6">Akomachi</h1>
       </header>
 
       <main className="flex-1 overflow-y-auto px-6 py-4">

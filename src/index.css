@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* raw values — these swap at runtime, so they live outside @theme */
 :root {
   --p-fg: #000000;
   --p-heading: #ffffff;
