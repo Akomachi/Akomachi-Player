@@ -40,14 +40,14 @@ export default function App() {
       }}
     >
       <header className="flex items-center gap-5 border-b border-line px-6 py-4">
-        <h1 className="text-5xl font-medium text-heading">Library</h1>
+        <h1 className="text-5xl font-medium pl-3 pr-6 text-heading">Library</h1>
         <button
           onClick={() => fileInput.current?.click()}
           className="mt-3 rounded-lg border border-line px-4 py-2 text-sm text-white font-semibold hover:bg-code"
         >
           Add files
         </button>
-        <h1 className="text-3xl text-heading absolute right-32 top-6">Akomachi</h1>
+        <h1 className="text-3xl text-heading absolute right-35 top-6">Akomachi</h1>
         <img className="h-28 w-28 object-scale-down absolute right-3 top-2" src="src/assets/icon.png"></img>
       </header>
 
