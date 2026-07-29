@@ -11,6 +11,7 @@ export function useAudioPlayer(){
     const [time, setTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [volume, setVolume] = useState(1)
+    const [rate, setRate] = useState(1)
 
     const playId = useCallback(async (id:string) => {
         const track = await getTrack(id)
@@ -64,13 +65,14 @@ export function useAudioPlayer(){
             engine.on("timeupdate", () => setTime(engine.el.currentTime)),
             engine.on("durationchange", () => setDuration(engine.el.duration || 0)),
             engine.on("volumechange", () => setVolume(engine.el.volume)),
+            engine.on("ratechange", () => setRate(engine.el.playbackRate)),
             engine.on("ended", () => { const n = queue.next(); if (n) void playId(n) }),
         ]
         return () => offs.forEach(off => off())
     }, [playId])
 
     return {
-        current, playing, time, duration, volume,
+        current, playing, time, duration, volume, rate,
         playTrack: (t: Track, list?: string[]) => {
             if (list) queue.set(list, list.indexOf(t.id))
             return playId(t.id)
@@ -78,6 +80,7 @@ export function useAudioPlayer(){
         toggle: () => (engine.el.paused ? void engine.play() : engine.pause()),
         seek: (t: number) => engine.seek(t),
         setVolume: (v: number) => engine.setVolume(v),
+        setRate: (p: number) => engine.setRate(p),
         next: () => { const n = queue.next(); if (n) void playId(n)},
         prev: () => { const p = queue.prev(); if (p) void playId(p)}
     }
